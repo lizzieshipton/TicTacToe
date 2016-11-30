@@ -4,6 +4,7 @@
 ### Instructions
 
 #### Setup/ Installation
+* You need to have node installed on your computer. If you don't know what that is, have a look [here](https://www.youtube.com/watch?v=pU9Q6oiQNd0)
 * Fork and clone this repo, or download as a .zip file by clicking "Clone or Download" => "Download as Zip"
 * Unpack the .zip file, or cd into the repo
 * Open the command line:
@@ -16,7 +17,8 @@ Once inside the command line, run the following commands:
 cd ~
 cd Downloads
 cd TicTacToe
-npm start
+npm install
+node game.js
 ```
 
 #### Gameplay
