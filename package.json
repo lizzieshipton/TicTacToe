@@ -4,11 +4,17 @@
   "description": "Tic Tac Toe for Command Line using Node.js",
   "main": "game.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node game.js"
   },
   "author": "Lizzie Shipton",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "prompt": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lizzieshipton/tictactoe.git"
   }
 }

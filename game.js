@@ -1,5 +1,5 @@
-//install bable and use babelrc for ES6!!
-
+//install babel and use babelrc for ES6!!
+//ignore node modules!
 //construct an empty board matrix
 //define rows and cols
 //construct a board visualization representing spots 1-9
@@ -19,7 +19,7 @@
 //console.log("Your Turn")
   //repeat all above logic
 
-const prompt = require('prompt');
+var prompt = require('prompt');
 
 const board = [row1,
                row2,
@@ -52,6 +52,7 @@ const takeTurn = () => {
   console.log(boardVis);
   console.log("Your Turn");
   prompt.start();
+
   prompt.get(['position'], (err, result) {
     //use result to update position
     //if collisions takeTurn()
