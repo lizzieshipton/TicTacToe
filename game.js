@@ -38,16 +38,24 @@ var boardVis = '| 1 | 2 | 3 |\n' +
                '| 4 | 5 | 6 |\n' +
                '| 7 | 8 | 9 |\n'
 
-var winningCombos = ['winningCombos here'];
+var winningCombos = [
+  ['123'],
+  ['456'],
+  ['789'],
+  ['147'],
+  ['258'],
+  ['369'],
+  ['159'],
+  ['357']
+];
 //==============================================//
 
 
 //=================GAMEPLAY FUNCTIONS===============//
 var placeLetter = function(letter, position) {
-
    for(var square in board) {
     if(square === position && board[square] === '') {
-      if(letter = 'X') {
+      if(letter === 'X') {
         board[square] = 'X';
       } else {
         board[square] = 'O'
@@ -60,12 +68,20 @@ var placeLetter = function(letter, position) {
 };
 
 var checkForWins = function(newBoard) {
-  for(var combo of winningCombos) {
-    //check for wins
+  var compareXCombos = '';
+  var compareYCombos = '';
+  for(var square in newBoard) {
+      if(newBoard[square] === 'X') {
+        compareXCombos += square;
+      } else if(newBoard[square] === 'Y') {
+        compareYCombos += square;
+      }
   }
-  //if current state matches any winning combinations
-    //console.log("You Win!")
-    //end game
+  for(var combo of winningCombos) {
+    if(combo[0] === compareYCombos || combo[0] === compareXCombos) {
+      console.log("YOU WIN!!!")
+    }
+  }
 };
 
 var updateBoardState = function(newBoardVis) {
@@ -73,23 +89,19 @@ var updateBoardState = function(newBoardVis) {
     var reg = new RegExp(square, 'g')
     if(board[square] === 'X') {
       boardVis = newBoardVis.replace(reg, 'X')
-    } else if(board[square] === 'Y') {
-      boardVis = newBoardVis.replace(reg, 'Y')
+    } else if(board[square] === 'O') {
+      boardVis = newBoardVis.replace(reg, 'O')
     }
   }
 };
 
 var takeTurn = function() {
-
   console.log(boardVis);
-
   setTimeout(function() {
     console.log("---Make Your Move---");
-  }, 1000);
-
+  }, 750);
   setTimeout(function() {
     prompt.start();
-
     prompt.get(['letter', 'position'], function(err, result) {
       if(err) {
         return err;
@@ -101,8 +113,7 @@ var takeTurn = function() {
         takeTurn();
       }
     })
-  }, 2000);
-
+  }, 1500);
 };
 //======================================================================//
 
