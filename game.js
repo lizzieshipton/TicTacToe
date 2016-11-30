@@ -79,8 +79,9 @@ var checkForWins = function(newBoard) {
   }
   for(var combo of winningCombos) {
     if( (combo[0] === compareYCombos || combo[0] === compareYCombos.reverse) ||
-        (combo[0] === compareXCombos || combo[0] === compareXCombos.reverse) {
+        (combo[0] === compareXCombos || combo[0] === compareXCombos.reverse) ){
       console.log("YOU WIN!!!");
+      process.exit()
     }
   }
 };

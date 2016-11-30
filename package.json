@@ -8,11 +8,6 @@
   },
   "author": "Lizzie Shipton",
   "license": "ISC",
-  "dependencies": {
-    "babel-core": "^6.18.2",
-    "babel-eslint": "^7.1.1",
-    "prompt": "^1.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/lizzieshipton/tictactoe.git"
