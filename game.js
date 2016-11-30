@@ -72,13 +72,11 @@ var updateBoardState = function(newBoardVis) {
   for(var square in board) {
     var reg = new RegExp(square, 'g')
     if(board[square] === 'X') {
-      newBoardVis.replace(reg, 'X')
-      console.log("VIS", newBoardVis)
+      boardVis = newBoardVis.replace(reg, 'X')
     } else if(board[square] === 'Y') {
-      newBoardVis.replace(reg, 'Y')
+      boardVis = newBoardVis.replace(reg, 'Y')
     }
   }
-  boardVis = newBoardVis;
 };
 
 var takeTurn = function() {
