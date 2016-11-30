@@ -21,24 +21,32 @@
 
 var prompt = require('prompt');
 
-const board = [row1,
-               row2,
-               row3]
+var board = [row1,
+             row2,
+             row3]
 
-const row1 = new Array(3);
-const row2 = new Array(3);
-const row3 = new Array(3);
+var row1 = new Array(3);
+var row2 = new Array(3);
+var row3 = new Array(3);
 
-const col1 = row1[0];
-const col2 = row1[1];
-const col3 = row1[2];
+var col1 = row1[0];
+var col2 = row1[1];
+var col3 = row1[2];
 
-const boardVis = '| 1 | 2 | 3 |\n' +
-                 '| 4 | 5 | 6 |\n' +
-                 '| 7 | 8 | 9 |\n'
+var boardVis = '| 1 | 2 | 3 |\n' +
+               '| 4 | 5 | 6 |\n' +
+               '| 7 | 8 | 9 |\n'
 
-const wins = (board) => {
+var placeMarker = function(input) {
+
+}
+
+var checkForLegality = function() {
+
+}
+var checkForWins = function(board) {
   //check all rows
+
     //are all indeces filled?
       //are all values the same?
         //win!
@@ -48,14 +56,25 @@ const wins = (board) => {
     //repeat above logic
 }
 
-const takeTurn = () => {
+var takeTurn = () => {
+
   console.log(boardVis);
-  console.log("Your Turn");
+
+  setTimeout(function() {
+    console.log("---Make Your Move---");
+  }, 1000);
+
   prompt.start();
 
-  prompt.get(['position'], (err, result) {
-    //use result to update position
-    //if collisions takeTurn()
-    //if win, end game
+  prompt.get(['marker', 'position'], function(err, result) {
+    if(result.marker === 'X') {
+      placeMarker('X', result.position);
+    } else if(result.marker === 'Y'){
+      placeMarker('Y', result.position);
+    } else {
+      console.log("Invalid Letter!")
+    }
   })
+
 };
+takeTurn()
