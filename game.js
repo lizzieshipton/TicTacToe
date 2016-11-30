@@ -17,8 +17,11 @@
 //update board visualization
 //call prompt
 
+//===NODE CLI===//
 var prompt = require('prompt');
 
+
+//===GAME SETUP===//
 var board = {
   '1':'',
   '2':'',
@@ -35,6 +38,11 @@ var boardVis = '| 1 | 2 | 3 |\n' +
                '| 4 | 5 | 6 |\n' +
                '| 7 | 8 | 9 |\n'
 
+var winningCombos = ['winningCombos here'];
+//==============================================//
+
+
+//=================GAMEPLAY FUNCTIONS===============//
 var placeLetter = function(letter, position) {
 
    for(var square in board) {
@@ -42,29 +50,35 @@ var placeLetter = function(letter, position) {
       if(letter = 'X') {
         board[square] = 'X';
       } else {
-        board[square] = 'Y'
+        board[square] = 'O'
       }
-    } else {
-      console.log("Invalid Placement! Please select an empty square from 1-9");
-      takeTurn();
     }
   }
-
   checkForWins(board);
   updateBoardState(boardVis);
   takeTurn();
 };
 
-var checkForWins = function(board) {
-  //iterate over board object
+var checkForWins = function(newBoard) {
+  for(var combo of winningCombos) {
+    //check for wins
+  }
   //if current state matches any winning combinations
     //console.log("You Win!")
     //end game
 };
 
-var updateBoardState(newBoard) {
-  //iterate over board keys
-  //update the boardVis with the all new letter values using regex.replace
+var updateBoardState = function(newBoardVis) {
+  for(var square in board) {
+    var reg = new RegExp(square, 'g')
+    if(board[square] === 'X') {
+      newBoardVis.replace(reg, 'X')
+      console.log("VIS", newBoardVis)
+    } else if(board[square] === 'Y') {
+      newBoardVis.replace(reg, 'Y')
+    }
+  }
+  boardVis = newBoardVis;
 };
 
 var takeTurn = function() {
@@ -79,8 +93,11 @@ var takeTurn = function() {
     prompt.start();
 
     prompt.get(['letter', 'position'], function(err, result) {
-      if(result.marker === 'X' || result.maker === 'O') {
-        placeLetter(result.marker, result.position);
+      if(err) {
+        return err;
+      }
+      if(result.letter === 'X' || result.letter === 'O') {
+        placeLetter(result.letter, result.position);
       } else {
         console.log("Invalid Letter! Please enter X or O")
         takeTurn();
@@ -89,17 +106,9 @@ var takeTurn = function() {
   }, 2000);
 
 };
+//======================================================================//
 
+
+//====START GAME===//
 takeTurn()
-//
-// [row1,
-//              row2,
-//              row3]
-//
-// var row1 = new Array(3);
-// var row2 = new Array(3);
-// var row3 = new Array(3);
-//
-// var col1 = row1[0];
-// var col2 = row1[1];
-// var col3 = row1[2];
+//===============//
