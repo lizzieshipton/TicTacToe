@@ -69,10 +69,10 @@ var takeTurn = () => {
   prompt.get(['marker', 'position'], function(err, result) {
     if(result.marker === 'X') {
       placeMarker('X', result.position);
-    } else if(result.marker === 'Y'){
-      placeMarker('Y', result.position);
+    } else if(result.marker === 'O'){
+      placeMarker('O', result.position);
     } else {
-      console.log("Invalid Letter!")
+      console.log("Invalid Letter! Please enter \'X\' or \'O\'")
     }
   })
 
